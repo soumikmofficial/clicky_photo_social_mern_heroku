@@ -32,12 +32,12 @@ cloudinary.config({
   secure: true,
 });
 
-app.use(
-  rateLimiter({
-    windowMs: 15 * 60 * 1000,
-    max: 60,
-  })
-);
+// app.use(
+//   rateLimiter({
+//     windowMs: 15 * 60 * 1000,
+//     max: 60,
+//   })
+// );
 app.use(cors());
 app.use(
   helmet.contentSecurityPolicy({

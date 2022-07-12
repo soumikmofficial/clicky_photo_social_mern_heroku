@@ -108,9 +108,6 @@ const PinDetails: React.FC = () => {
         {/* image and url and save count*/}
 
         <div className="flex justify-start items-center rounded-t-2xl rounded-b-lg flex-shrink-0 relative flex-col gap-2  lg:max-w-[500px]">
-          <p className="absolute bottom-2 right-8 lg:right-3 text-red-500 flex items-center gap-2 text-sm">
-            <span>{pin?.saves.length}</span> <BsBookmarkHeart />
-          </p>
           {/* the download bar */}
           <div className="flex items-center justify-between w-full">
             <a href={pin?.downloadUrl}>
@@ -136,7 +133,15 @@ const PinDetails: React.FC = () => {
               )}
             </div>
           </div>
-          <a href={pin?.image} target="_blank" rel="noreferrer">
+          <a
+            href={pin?.image}
+            target="_blank"
+            rel="noreferrer"
+            className="relative"
+          >
+            <p className="absolute bottom-2 right-3 lg:right-3 text-red-500 flex items-center gap-2 text-sm">
+              <span>{pin?.saves.length}</span> <BsBookmarkHeart />
+            </p>
             <img
               src={pin?.image}
               alt="pin"
