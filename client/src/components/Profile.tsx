@@ -7,7 +7,7 @@ import { useUserQuery } from "../hooks/userHooks";
 import { selectUser } from "../store";
 import MasonryLayout from "./MasonryLayout";
 import Spinner from "./Spinner";
-import { useLogout } from "../hooks/useLogout";
+import { useLogout } from "../hooks/authHooks";
 
 const randomImg = "https://source.unsplash.com/1600x900?photography";
 

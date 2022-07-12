@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { usePinsQuery } from "../hooks/pinHooks";
 import { MasonryLayout, Spinner } from ".";
-import { useLogout } from "../hooks/useLogout";
 
 const Feed = () => {
   const { categoryId } = useParams();
@@ -46,7 +45,7 @@ const Feed = () => {
         <p className="capitalize text-gray-600">
           {pinFetchError.response.data.message}{" "}
         </p>
-        <p className="capitalize">you will be redirected to the login page </p>
+        <p className="capitalize">try loggin back in after some time</p>
       </div>
     );
   }

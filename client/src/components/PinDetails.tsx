@@ -136,7 +136,7 @@ const PinDetails: React.FC = () => {
               )}
             </div>
           </div>
-          <a href={pin?.image} target="_blank">
+          <a href={pin?.image} target="_blank" rel="noreferrer">
             <img
               src={pin?.image}
               alt="pin"

@@ -3,6 +3,7 @@ import { useMutation, useQuery } from "react-query";
 import { useNavigate, useParams } from "react-router-dom";
 import { ICategory, IError, IPin, IQueryObj } from "../types/api";
 import { createPinFetchUrl } from "../utils/buildFetchUrl";
+import { useLogout } from "./authHooks";
 
 interface ISaveData {
   userId: string;
@@ -73,12 +74,18 @@ const deletePin = async (pinId: string | undefined): Promise<IPin> => {
 // todo: custom query hooks
 
 export const usePinsQuery = (queryObj: IQueryObj | undefined) => {
+  const logout = useLogout();
   return useQuery<IPin[], IError>(
     ["fetch-pins", queryObj],
     (context) => fetchPins(queryObj),
     {
       refetchOnWindowFocus: false,
       enabled: false,
+      onError: (error) => {
+        if (error.response.statusText === "Unauthorized") {
+          logout();
+        }
+      },
     }
   );
 };

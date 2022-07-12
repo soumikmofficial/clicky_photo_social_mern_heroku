@@ -1,33 +1,18 @@
 import bgUrl from "../assets/gallery.mp4";
 import { AiFillCamera } from "react-icons/ai";
-import { Navigate, useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { addUser } from "../features/userSlice";
+import { Navigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 import { selectUser } from "../store";
 import { GoogleLogin } from "@react-oauth/google";
-import axios from "axios";
+import { useLogin } from "../hooks/authHooks";
 
 const LoginPage = () => {
   // todo: states
   const user = useSelector(selectUser);
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
-  // todo: functions
-  const handleLoginSuccess = async (token: string) => {
-    try {
-      const {
-        data: { user },
-      } = await axios.post("/api/v1/user", {
-        token,
-      });
-      dispatch(addUser(user));
-      navigate("/");
-    } catch (error: any) {
-      console.log(error);
-    }
-  };
 
-  // todo: useEffects
+  // todo: functions
+
+  const login = useLogin();
 
   // todo: return
 
@@ -61,10 +46,10 @@ const LoginPage = () => {
               {/* signin button */}
 
               <GoogleLogin
+                onSuccess={(response: any) => login(response.credential)}
+                useOneTap
                 auto_select
-                onSuccess={(response: any) =>
-                  handleLoginSuccess(response.credential)
-                }
+                ux_mode="popup"
               />
             </div>
           </div>

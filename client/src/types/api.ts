@@ -26,6 +26,7 @@ export interface IUserID {
 
 export interface IError extends Error {
   response: any;
+  statusText?: string;
 }
 
 export interface IComment {
