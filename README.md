@@ -1,4 +1,11 @@
-clicking profile image must enlarge it when in profile view
-hide topbar profile image in mobile view
-remove logout on useEffect
-responsive sidebar dark theme
+# Clicky: The photo sharing app
+
+**Modern-day social-media-like app build with MERN stack.**
+
+- uses Google's new identity services to signup and login user.
+- uses tailwind-css to styles the components
+- uses react-query for api calls
+- uses react-formik for forms
+- uses additional styling libraries like react-masonory-css
+- uses typescript
+- deployed on heroku

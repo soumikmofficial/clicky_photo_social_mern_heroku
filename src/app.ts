@@ -1,10 +1,15 @@
 import express from "express";
 import "express-async-errors";
-import morgan from "morgan";
+// import morgan from "morgan";
 import http from "http";
-import cors from "cors";
 import cookieParser from "cookie-parser";
 import { v2 as cloudinary } from "cloudinary";
+
+// security imports
+import cors from "cors";
+import mongoSanitize from "express-mongo-sanitize";
+import rateLimiter from "express-rate-limit";
+import helmet from "helmet";
 
 // ...................................
 import { config } from "./config/config";
@@ -27,7 +32,28 @@ cloudinary.config({
   secure: true,
 });
 
+app.use(
+  rateLimiter({
+    windowMs: 15 * 60 * 1000,
+    max: 60,
+  })
+);
 app.use(cors());
+app.use(
+  helmet.contentSecurityPolicy({
+    useDefaults: true,
+    directives: {
+      "img-src": ["'self'", "https: data:"],
+      "script-src": [
+        "'self'",
+        "'unsafe-inline'",
+        "https://checkout.razorpay.com/v1/checkout.js",
+      ],
+      "frame-src": ["'self'", "https://api.razorpay.com/"],
+    },
+  })
+);
+app.use(mongoSanitize());
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
