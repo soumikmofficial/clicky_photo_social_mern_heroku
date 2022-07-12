@@ -76,7 +76,7 @@ const PinDetails: React.FC = () => {
   // todo: useEffects
   useEffect(() => {
     fetchSimilarPins();
-  }, [fetchSimilarPins]);
+  }, [fetchSimilarPins, pin]);
 
   useEffect(() => {
     if (postedComment) {
@@ -100,6 +100,8 @@ const PinDetails: React.FC = () => {
   if (fetchingPin || fetchingSimilarPins) {
     return <Spinner message="fetching your pin" />;
   }
+
+  console.log(similarPins);
 
   return (
     <div className="flex-grow overflow-scroll flex flex-col align-center gap-5">
