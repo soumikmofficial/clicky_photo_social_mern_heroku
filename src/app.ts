@@ -49,7 +49,11 @@ app.use(
         "'unsafe-inline'",
         "https://accounts.google.com/gsi/client",
       ],
-      "frame-src": ["'self'"],
+      "frame-src": ["'self'", "https://accounts.google.com/"],
+      "connect-src": [
+        "'self'",
+        "https://accounts.google.com/gsi/status?client_id=190624094133-ukokb1rt7iu4es8b84epm64o71ek9ttf.apps.googleusercontent.com&as=OVGtNjvMOI7IoYXQhKmolw",
+      ],
     },
   })
 );
