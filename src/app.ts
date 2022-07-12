@@ -39,20 +39,7 @@ app.use(
   })
 );
 app.use(cors());
-app.use(
-  helmet.contentSecurityPolicy({
-    useDefaults: true,
-    directives: {
-      "img-src": ["'self'", "https: data:"],
-      "script-src": [
-        "'self'",
-        "'unsafe-inline'",
-        "https://checkout.razorpay.com/v1/checkout.js",
-      ],
-      "frame-src": ["'self'", "https://api.razorpay.com/"],
-    },
-  })
-);
+app.use(helmet());
 app.use(mongoSanitize());
 
 app.use(express.urlencoded({ extended: true }));
