@@ -101,8 +101,6 @@ const PinDetails: React.FC = () => {
     return <Spinner message="fetching your pin" />;
   }
 
-  console.log(similarPins);
-
   return (
     <div className="flex-grow overflow-scroll flex flex-col align-center gap-5">
       {/* main details section */}
