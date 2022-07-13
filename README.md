@@ -9,3 +9,7 @@
 - uses additional styling libraries like react-masonory-css
 - uses typescript
 - deployed on heroku
+
+<!-- todo: -->
+
+add login page route on page error and also logout while at it

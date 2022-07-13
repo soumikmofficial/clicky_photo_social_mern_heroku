@@ -1,10 +1,14 @@
 import { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { usePinsQuery } from "../hooks/pinHooks";
 import { MasonryLayout, Spinner } from ".";
+import { useLogout } from "../hooks/authHooks";
 
 const Feed = () => {
   const { categoryId } = useParams();
+  const logout = useLogout();
+  const navigate = useNavigate();
+
   const {
     isLoading: loadingAllPins,
     data: allPins,
@@ -18,6 +22,12 @@ const Feed = () => {
     refetch: fetchPinsByCategory,
     isRefetching: fetchingPinsByCategory,
   } = usePinsQuery({ category: categoryId });
+
+  // todo: functions
+  const handleErrorRedirect = () => {
+    logout();
+    navigate("/login");
+  };
 
   // todo: useEffects
   useEffect(() => {
@@ -45,14 +55,22 @@ const Feed = () => {
         <p className="capitalize text-gray-600">
           {pinFetchError.response.data.message}{" "}
         </p>
-        <p className="capitalize">try loggin back in after some time</p>
+        <div className="capitalize flex flex-col gap-4 items-center">
+          <p>something went wrong... please try logging back in</p>
+          <button
+            className="bg-dark2 p-2 w-max rounded-md text-white"
+            onClick={handleErrorRedirect}
+          >
+            Login
+          </button>
+        </div>
       </div>
     );
   }
   if (!pinsByCategory && !allPins) {
     return (
-      <div className="">
-        Unfortunately there is no fin to display at this point
+      <div className="w-full flex items-center justify-center">
+        Unfortunately there is no pin to display at this point
       </div>
     );
   }

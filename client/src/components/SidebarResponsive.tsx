@@ -6,7 +6,6 @@ import { AiFillHome } from "react-icons/ai";
 import { selectUser } from "../store";
 import { useSelector } from "react-redux";
 import { useCategoriesQuery } from "../hooks/pinHooks";
-import Spinner from "./Spinner";
 import { HiOutlineHashtag } from "react-icons/hi";
 
 interface IProps {
@@ -59,7 +58,7 @@ const SidebarResponsive: React.FC<IProps> = ({ setIsSidebar }) => {
 
         <h3 className="ml-5 text-sm ">Discover Categories</h3>
         {isLoading ? (
-          <Spinner message="Fetching the top categories" />
+          <></>
         ) : (
           data &&
           data.map((category, i) => (
