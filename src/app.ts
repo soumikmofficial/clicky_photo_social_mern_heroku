@@ -44,46 +44,24 @@ app.use(
     referrerPolicy: {
       policy: "strict-origin-when-cross-origin",
     },
-    contentSecurityPolicy: {
-      useDefaults: true,
-      directives: {
-        "img-src": ["'self'", "https: data: blob:"],
-        "script-src": [
-          "'self'",
-          "'unsafe-inline'",
-          "https://accounts.google.com/gsi/client",
-        ],
-        "frame-src": ["'self'", "https://accounts.google.com/"],
-        "connect-src": [
-          "'self'",
-          "https://accounts.google.com/gsi/status",
-          "google",
-          "*.google",
-          "*.google.com",
-          "*.googleapis.com",
-          "'unsafe-inline'",
-        ],
-        // "default-src": ["'self'"],
-      },
-    },
   })
 );
 
-// app.use(
-//   helmet.contentSecurityPolicy({
-//     useDefaults: true,
-//     directives: {
-//       "img-src": ["'self'", "https: data: blob:"],
-//       "script-src": [
-//         "'self'",
-//         "'unsafe-inline'",
-//         "https://accounts.google.com/gsi/client",
-//       ],
-//       "frame-src": ["'self'", "https://accounts.google.com/"],
-//       "connect-src": ["'self'", "https://accounts.google.com/gsi/status"],
-//     },
-//   })
-// );
+app.use(
+  helmet.contentSecurityPolicy({
+    useDefaults: true,
+    directives: {
+      "img-src": ["'self'", "https: data: blob:"],
+      "script-src": [
+        "'self'",
+        "'unsafe-inline'",
+        "https://accounts.google.com/gsi/client",
+      ],
+      "frame-src": ["'self'", "https://accounts.google.com/"],
+      "connect-src": ["'self'", "https://accounts.google.com/gsi/status"],
+    },
+  })
+);
 app.use(mongoSanitize());
 
 app.use(express.urlencoded({ extended: true }));
