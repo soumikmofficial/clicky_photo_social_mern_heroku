@@ -21,7 +21,7 @@ export const useLogin = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { pathname } = useLocation();
-  return async (token: string) => {
+  return (token: string) => {
     try {
       const {
         data: { user },
