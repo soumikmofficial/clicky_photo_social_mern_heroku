@@ -54,7 +54,7 @@ app.use(
           "https://accounts.google.com/gsi/client",
         ],
         "frame-src": ["'self'", "https://accounts.google.com/"],
-        "connect-src": ["'self'", "https://accounts.google.com/gsi/status"],
+        "connect-src": ["'self'", "'https://accounts.google.com/gsi/status'"],
         // "default-src": ["'self'"],
       },
     },
