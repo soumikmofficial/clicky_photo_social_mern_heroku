@@ -66,14 +66,7 @@ app.use(
 app.use(
   helmet.referrerPolicy({
     // policy: "strict-origin-when-cross-origin",
-    policy: [
-      "origin",
-      "strict-origin-when-cross-origin",
-      "unsafe-url",
-      "no-referrer",
-      "strict-origin",
-      "same-origin",
-    ],
+    policy: ["strict-origin-when-cross-origin"],
   })
 );
 
