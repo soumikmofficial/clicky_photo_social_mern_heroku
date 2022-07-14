@@ -71,7 +71,7 @@ app.use(
       "strict-origin-when-cross-origin",
       "unsafe-url",
       "no-referrer",
-      "strick-origin",
+      "strict-origin",
       "same-origin",
     ],
   })
