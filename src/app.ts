@@ -47,27 +47,27 @@ app.use(cors());
 //   })
 // );
 
-app.use(
-  helmet.contentSecurityPolicy({
-    useDefaults: true,
-    directives: {
-      "img-src": ["'self'", "https: data: blob:"],
-      "script-src": [
-        "'self'",
-        "'unsafe-inline'",
-        "https://accounts.google.com/gsi/client",
-      ],
-      "frame-src": ["'self'", "https://accounts.google.com/"],
-      "connect-src": ["'self'", "https://accounts.google.com/gsi/"],
-    },
-  })
-);
+// app.use(
+//   helmet.contentSecurityPolicy({
+//     useDefaults: true,
+//     directives: {
+//       "img-src": ["'self'", "https: data: blob:"],
+//       "script-src": [
+//         "'self'",
+//         "'unsafe-inline'",
+//         "https://accounts.google.com/gsi/client",
+//       ],
+//       "frame-src": ["'self'", "https://accounts.google.com/"],
+//       "connect-src": ["'self'", "https://accounts.google.com/gsi/"],
+//     },
+//   })
+// );
 
-app.use(
-  helmet.referrerPolicy({
-    policy: "strict-origin-when-cross-origin",
-  })
-);
+// app.use(
+//   helmet.referrerPolicy({
+//     policy: "strict-origin-when-cross-origin",
+//   })
+// );
 
 app.use(mongoSanitize());
 
