@@ -39,13 +39,6 @@ cloudinary.config({
 //   })
 // );
 app.use(cors());
-// app.use(
-//   helmet({
-//     referrerPolicy: {
-//       policy: "strict-origin-when-cross-origin",
-//     },
-//   })
-// );
 
 app.use(
   helmet.contentSecurityPolicy({
@@ -65,7 +58,6 @@ app.use(
 
 app.use(
   helmet.referrerPolicy({
-    // policy: "strict-origin-when-cross-origin",
     policy: ["strict-origin-when-cross-origin"],
   })
 );

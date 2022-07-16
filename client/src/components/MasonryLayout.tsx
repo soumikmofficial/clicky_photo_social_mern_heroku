@@ -14,7 +14,7 @@ const breakpointColumnsObj = {
   1200: 3,
   1000: 3,
   500: 2,
-  400: 2,
+  375: 1,
 };
 
 const MasonryLayout: React.FC<IProps> = ({ pins }) => {
